@@ -1,0 +1,10 @@
+package com.example.mywaterapp.alarmManager.utils
+
+object Constants {
+    const val ACTION_SET_EXACT_ALARM = "ACTION_SET_EXACT_ALARM"
+    const val ACTION_SET_REPETITIVE_ALARM = "ACTION_SET_REPETITIVE_ALARM"
+    const val ACTION_SET_HOUR_ALARM = "ACTION_SET_HOUR_ALARM"
+    const val ACTION_SET_2HOUR_ALARM = "ACTION_SET_2HOUR_ALARM"
+    const val ACTION_SET_3HOUR_ALARM = "ACTION_SET_3HOUR_ALARM"
+    const val EXTRA_EXACT_ALARM_TIME = "EXTRA_EXACT_ALARM_TIME"
+}

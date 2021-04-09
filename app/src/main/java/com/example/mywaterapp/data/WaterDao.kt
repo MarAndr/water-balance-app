@@ -16,5 +16,7 @@ interface WaterDao {
     @Query("select * from ${WaterContract.TABLE_NAME}")
     fun getAllWaterLiveData(): LiveData<List<DrinkingWater>>
 
+//    @Query("select sum(${DoctorsContract.Columns.AGE}) from ${DoctorsContract.TABLE_NAME}")
+//    fun allWaterSum() : LiveData<Double>
 
 }

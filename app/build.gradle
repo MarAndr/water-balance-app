@@ -3,7 +3,6 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id  'kotlin-kapt'
-
 }
 
 android {
@@ -16,6 +15,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -51,30 +51,67 @@ android {
 
 dependencies {
 
+    //Activity KTX for viewModels()
+    implementation "androidx.activity:activity-ktx:1.2.0"
+
+    //ThreeTen
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.3.0'
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.4'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.4'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.4'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.4'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.2'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+    //Permissions
+    implementation 'org.permissionsdispatcher:permissionsdispatcher-ktx:1.0.1'
+    implementation 'androidx.lifecycle:lifecycle-common-java8:2.2.0'
+    //ViewModel
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    //Moshi
+    def moshiVersion = '1.9.3'
+
+    implementation "com.squareup.moshi:moshi:$moshiVersion"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+
+    //Permissions
+    implementation 'org.permissionsdispatcher:permissionsdispatcher:4.8.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    kapt 'org.permissionsdispatcher:permissionsdispatcher-processor:4.8.0'
+
+    //Location
+    implementation 'com.google.android.gms:play-services-location:17.1.0'
+
+    //Okhttp
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+
+    implementation 'com.hannesdorfmann:adapterdelegates4:4.3.0'
+
+    //RoomDao
+    def room_version = "2.2.6"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+
+    implementation platform('com.google.firebase:firebase-bom:26.4.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-messaging'
 
     implementation 'com.jakewharton.threetenabp:threetenabp:1.3.0'
 
-    //Room
-    def room_version = "2.2.6"
-    implementation "androidx.room:room-runtime:$room_version"
-    implementation "androidx.room:room-ktx:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-
-    implementation 'com.jakewharton.timber:timber:4.7.1'
 }

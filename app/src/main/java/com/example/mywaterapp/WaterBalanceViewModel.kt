@@ -53,5 +53,11 @@ class WaterBalanceViewModel : ViewModel() {
         _isItFirstRun.postValue(SavingSPHelper.isFirstRunFlag)
     }
 
+    fun saveWaterBalanceNormInSharedPreferences(sex: String, weight: Int){
+        viewModelScope.launch {
+            repository.saveWaterBalanceNormInSharedPreferences(sex, weight)
+        }
+    }
+
 
 }
