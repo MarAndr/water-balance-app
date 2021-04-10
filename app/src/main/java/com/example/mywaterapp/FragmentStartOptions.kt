@@ -21,7 +21,9 @@ class FragmentStartOptions: ViewBindingFragment<FragmentOptionBinding>(FragmentO
         }
 
         binding.btnStartOptionFragment.setOnClickListener {
-            viewModel.saveWaterBalanceNormInSharedPreferences(getRadioButtonValue(), weightChoiced.toInt())
+
+            viewModel.saveWaterBalanceNormInSharedPreferences(getRadioButtonValue(), if (::weightChoiced.isInitialized) weightChoiced.toInt() else 75)
+
             findNavController().navigate(R.id.action_fragmentStartOptions_to_mainFragment)
         }
     }

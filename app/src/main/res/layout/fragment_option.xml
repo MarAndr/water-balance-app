@@ -9,7 +9,7 @@
         android:id="@+id/tv_fragmentStartOption_sexHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your gender: "
+        android:text="@string/your_gender_header"
         android:textSize="32dp"
         app:layout_constraintBottom_toTopOf="@id/linearLayout_sex"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,15 +36,17 @@
             <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/radioButton_startOptionFragment_male"
                 android:layout_width="wrap_content"
+                android:layout_marginEnd="16dp"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="male" />
+                android:text="@string/maleTitle"
+                android:layout_marginRight="16dp" />
 
             <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/radioButton_startOptionFragment_female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="female" />
+                android:text="@string/femaleTitle" />
         </RadioGroup>
 
 

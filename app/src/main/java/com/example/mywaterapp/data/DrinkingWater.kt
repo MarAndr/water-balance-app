@@ -11,6 +11,8 @@ data class DrinkingWater(
         val id: Long,
         @ColumnInfo(name = WaterContract.Columns.TIME)
         val time: String,
+        @ColumnInfo(name = WaterContract.Columns.DAY)
+        val day: String,
         @ColumnInfo(name = WaterContract.Columns.VOLUME)
         val volume: Long
 )

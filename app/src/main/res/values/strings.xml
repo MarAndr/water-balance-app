@@ -12,5 +12,8 @@
     <string name="personalDataWeightTitle">Weight</string>
     <string name="confirm_button">confirm</string>
     <string name="notification_message">Time to drink some water</string>
+    <string name="maleTitle">Male</string>
+    <string name="femaleTitle">Female</string>
+    <string name="your_gender_header">Your gender:</string>
 
 </resources>

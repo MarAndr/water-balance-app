@@ -8,5 +8,6 @@ object WaterContract {
         const val ID = "id"
         const val TIME = "time"
         const val VOLUME = "volume"
+        const val DAY = "day"
     }
 }

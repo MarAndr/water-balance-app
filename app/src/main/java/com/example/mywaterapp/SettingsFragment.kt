@@ -5,6 +5,7 @@ import android.app.TimePickerDialog
 import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.mywaterapp.alarmManager.service.AlarmService
 import com.example.mywaterapp.databinding.FragmentSettingsBinding
@@ -15,6 +16,7 @@ import java.util.*
 
 class SettingsFragment: ViewBindingFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate) {
 
+    private val viewModel by viewModels<WaterBalanceViewModel>()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -26,11 +28,11 @@ class SettingsFragment: ViewBindingFragment<FragmentSettingsBinding>(FragmentSet
             SavingSPHelper.spUserSettings.getInt(SavingSPHelper.USER_WEIGHT, 0).toString()
 
         binding.tvSettingsFragmentWeightCurrentValue.setOnClickListener {
-            ChangeWeightDialog().show(childFragmentManager, "changeWeightDialog")
+            ChangeWeightDialog(viewModel).show(childFragmentManager, "changeWeightDialog")
         }
 
         binding.tvSettingsFragmentGenderCurrentValue.setOnClickListener {
-            ChangeGengerDialog().show(childFragmentManager, "changeGengerDialog")
+            ChangeGengerDialog(viewModel).show(childFragmentManager, "changeGengerDialog")
         }
     }
 

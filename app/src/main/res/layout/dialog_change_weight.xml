@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout_weight_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+        <com.webianks.library.scroll_choice.ScrollChoice
+            android:id="@+id/scroll_choice_dialogChangeWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:scroll_background_color="#FFFFFF"
+            app:scroll_indicator="true"
+            app:scroll_indicator_size="1dp"
+            app:scroll_item_align="center"
+            app:scroll_item_text_color="#787878"
+            app:scroll_item_text_size="32sp"
+            app:scroll_selected_item_text_color="?attr/colorPrimary" />
+
+    </LinearLayout>
+
