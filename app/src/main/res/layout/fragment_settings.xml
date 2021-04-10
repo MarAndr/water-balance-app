@@ -49,6 +49,7 @@
                     android:text="@string/personalDataGenderTitle" />
 
                 <TextView
+                    android:id="@+id/tv_settingsFragment_genderCurrentValue"
                     style="@style/SettingsResultsPersonalData"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -67,6 +68,7 @@
                     android:text="@string/personalDataWeightTitle" />
 
                 <TextView
+                    android:id="@+id/tv_settingsFragment_weightCurrentValue"
                     style="@style/SettingsResultsPersonalData"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

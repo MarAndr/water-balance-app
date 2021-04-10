@@ -3,7 +3,7 @@ package com.example.mywaterapp
 import androidx.lifecycle.LiveData
 import com.example.mywaterapp.data.DrinkingWater
 import com.example.mywaterapp.data.WaterDatabase
-import com.example.mywaterapp.ui.home.SavingSPHelper
+import com.example.mywaterapp.utils.SavingSPHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -27,6 +27,10 @@ class WaterBalanceRepository {
         val waterNorm = if (sex == "Male") weight * 35 else weight * 31
         SavingSPHelper.spWaterNorm.edit()
             .putString("waterNorm", waterNorm.toString())
+            .apply()
+        SavingSPHelper.spUserSettings.edit()
+            .putInt(SavingSPHelper.USER_WEIGHT, weight)
+            .putString(SavingSPHelper.USER_GENDER, sex)
             .apply()
     }
 

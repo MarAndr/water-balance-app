@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.mywaterapp.databinding.FragmentStartBinding
-import com.example.mywaterapp.ui.home.SavingSPHelper
+import com.example.mywaterapp.utils.SavingSPHelper
 
 class StartFragment: ViewBindingFragment<FragmentStartBinding>(FragmentStartBinding::inflate) {
 

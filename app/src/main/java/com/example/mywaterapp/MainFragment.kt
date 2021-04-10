@@ -4,12 +4,9 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.mywaterapp.databinding.FragmentMainBinding
-import com.example.mywaterapp.ui.home.SavingSPHelper
-import com.example.mywaterapp.ui.home.SetVolumeDialog
+import com.example.mywaterapp.utils.SavingSPHelper
 import com.example.mywaterapp.utils.getCurrentDay
 import com.example.mywaterapp.utils.getDayFromFullTime
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_main.*
 import timber.log.Timber

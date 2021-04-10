@@ -8,6 +8,9 @@ import androidx.annotation.RequiresApi
 import androidx.navigation.fragment.findNavController
 import com.example.mywaterapp.alarmManager.service.AlarmService
 import com.example.mywaterapp.databinding.FragmentSettingsBinding
+import com.example.mywaterapp.dialogs.ChangeGengerDialog
+import com.example.mywaterapp.dialogs.ChangeWeightDialog
+import com.example.mywaterapp.utils.SavingSPHelper
 import java.util.*
 
 class SettingsFragment: ViewBindingFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate) {
@@ -17,6 +20,17 @@ class SettingsFragment: ViewBindingFragment<FragmentSettingsBinding>(FragmentSet
         super.onActivityCreated(savedInstanceState)
         binding.tvSettingsFragmentScheduleReminder.setOnClickListener {
         findNavController().navigate(R.id.action_settingsFragment_to_scheduleReminderFragment)
+        }
+        binding.tvSettingsFragmentGenderCurrentValue.text = SavingSPHelper.spUserSettings.getString(SavingSPHelper.USER_GENDER, "Male")
+        binding.tvSettingsFragmentWeightCurrentValue.text =
+            SavingSPHelper.spUserSettings.getInt(SavingSPHelper.USER_WEIGHT, 0).toString()
+
+        binding.tvSettingsFragmentWeightCurrentValue.setOnClickListener {
+            ChangeWeightDialog().show(childFragmentManager, "changeWeightDialog")
+        }
+
+        binding.tvSettingsFragmentGenderCurrentValue.setOnClickListener {
+            ChangeGengerDialog().show(childFragmentManager, "changeGengerDialog")
         }
     }
 

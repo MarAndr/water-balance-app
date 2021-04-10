@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mywaterapp.data.DrinkingWater
-import com.example.mywaterapp.ui.home.SavingSPHelper
+import com.example.mywaterapp.utils.SavingSPHelper
 import com.example.mywaterapp.utils.getCurrentDay
 import com.example.mywaterapp.utils.getDayFromFullTime
 import kotlinx.coroutines.launch

@@ -11,7 +11,9 @@
             app:destination="@id/fragmentStartOptions" />
         <action
             android:id="@+id/action_startFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/startFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/fragmentStartOptions"
@@ -19,7 +21,9 @@
         android:label="FragmentStartOptions" >
         <action
             android:id="@+id/action_fragmentStartOptions_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/fragmentStartOptions"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"

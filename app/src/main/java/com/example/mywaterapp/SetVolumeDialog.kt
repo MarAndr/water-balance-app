@@ -1,13 +1,11 @@
-package com.example.mywaterapp.ui.home
+package com.example.mywaterapp
 
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import com.example.mywaterapp.R
 import com.example.mywaterapp.data.DrinkingWater
-import com.example.mywaterapp.WaterBalanceViewModel
 import com.example.mywaterapp.utils.getCurrentTime
 import kotlinx.android.synthetic.main.dialog_setvolume.view.*
 import timber.log.Timber

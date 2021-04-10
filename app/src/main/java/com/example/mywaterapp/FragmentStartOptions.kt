@@ -4,16 +4,24 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.mywaterapp.databinding.FragmentOptionBinding
+import com.example.mywaterapp.utils.Weight
 
 class FragmentStartOptions: ViewBindingFragment<FragmentOptionBinding>(FragmentOptionBinding::inflate) {
 
     private val viewModel: WaterBalanceViewModel by viewModels()
+    private lateinit var weightChoiced: String
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        binding.scrollChoice.addItems(Weight.weights,70)
+        binding.scrollChoice.visibleItemCount = 2
+        binding.scrollChoice.setOnItemSelectedListener { scrollChoice, position, name ->
+            weightChoiced = name
+        }
+
         binding.btnStartOptionFragment.setOnClickListener {
-            val weight = binding.etStartOptionFragmentWeight.text.toString()
-            viewModel.saveWaterBalanceNormInSharedPreferences(getRadioButtonValue(), weight.toInt())
+            viewModel.saveWaterBalanceNormInSharedPreferences(getRadioButtonValue(), weightChoiced.toInt())
             findNavController().navigate(R.id.action_fragmentStartOptions_to_mainFragment)
         }
     }
