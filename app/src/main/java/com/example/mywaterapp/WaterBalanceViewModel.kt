@@ -5,9 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mywaterapp.data.DrinkingWater
+import com.example.mywaterapp.data.sum.DaySum
 import com.example.mywaterapp.utils.SavingSPHelper
 import com.example.mywaterapp.utils.getCurrentDay
 import com.example.mywaterapp.utils.getDayFromFullTime
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -19,8 +21,12 @@ class WaterBalanceViewModel : ViewModel() {
     val waterBalanceLiveData = getAllWaterLiveData()
     private val _daySum = MutableLiveData<Long>()
     val daySum: LiveData<Long> = _daySum
+    private val _waterDaySum = MutableLiveData<Double>()
+    val waterDaySum: LiveData<Double> = _waterDaySum
     private val _isItFirstRun = MutableLiveData<Boolean>()
     val isItFirstRun: LiveData<Boolean> = _isItFirstRun
+    private val _allDaySum = MutableLiveData<List<DaySum>>()
+    val allDaySum: LiveData<List<DaySum>> = _allDaySum
 
     fun getAllWater() {
         Timber.d("_data.value = ${_data.value}")
@@ -56,6 +62,24 @@ class WaterBalanceViewModel : ViewModel() {
     fun saveWaterBalanceNormInSharedPreferences(sex: String, weight: Int){
         viewModelScope.launch {
             repository.saveWaterBalanceNormInSharedPreferences(sex, weight)
+        }
+    }
+
+    fun getWaterDaySum(day: String){
+        viewModelScope.launch(IO) {
+            _waterDaySum.postValue(repository.getWaterDaySum(day))
+        }
+    }
+
+    fun addDaySum(daySum: List<DaySum>){
+        viewModelScope.launch {
+            repository.addDaySum(daySum)
+        }
+    }
+
+    fun getAllDaysSum(){
+        viewModelScope.launch {
+        _allDaySum.value = repository.getAllDaysSum()
         }
     }
 

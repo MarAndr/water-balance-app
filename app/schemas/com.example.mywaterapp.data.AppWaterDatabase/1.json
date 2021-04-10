@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "4cc8a7902ce5a9e992687211a26d068e",
+    "identityHash": "426c9c315174039baa0d4020f55ca3fd",
     "entities": [
       {
         "tableName": "water_table",
@@ -41,12 +41,38 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "daySum_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`day` TEXT NOT NULL, `sum` REAL NOT NULL, PRIMARY KEY(`day`))",
+        "fields": [
+          {
+            "fieldPath": "day",
+            "columnName": "day",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sum",
+            "columnName": "sum",
+            "affinity": "REAL",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "day"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4cc8a7902ce5a9e992687211a26d068e')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '426c9c315174039baa0d4020f55ca3fd')"
     ]
   }
 }

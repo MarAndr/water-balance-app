@@ -13,10 +13,6 @@ import timber.log.Timber
 
 class SetVolumeDialog(private val viewModel: WaterBalanceViewModel): DialogFragment() {
 
-    companion object{
-        private const val TAG = "SetVolumeDialog"
-    }
-
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val view = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_setvolume, null)
         return AlertDialog.Builder(requireContext())

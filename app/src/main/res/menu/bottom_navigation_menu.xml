@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<item android:id="@+id/bottom_navigation_settings"
-    android:title="settings"
-    android:icon="@drawable/ic_baseline_settings"
-    app:showAsAction="always"/>
 
-    <item android:id="@+id/bottom_navigation_statistic"
-        android:title="statistic"
+    <item
+        android:id="@+id/bottom_navigation_home"
+        android:icon="@drawable/ic_baseline_home"
+        android:title="settings"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/bottom_navigation_settings"
+        android:icon="@drawable/ic_baseline_settings"
+        android:title="settings"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/bottom_navigation_statistic"
         android:icon="@drawable/stat"
-        app:showAsAction="always"/>
+        android:title="statistic"
+        app:showAsAction="always" />
 </menu>
