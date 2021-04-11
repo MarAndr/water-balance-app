@@ -2,6 +2,7 @@ package com.example.mywaterapp.statistic
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mywaterapp.ViewBindingFragment
@@ -9,7 +10,9 @@ import com.example.mywaterapp.WaterBalanceViewModel
 import com.example.mywaterapp.data.sum.DaySum
 import com.example.mywaterapp.databinding.FragmentStatisticBinding
 import com.example.mywaterapp.utils.getCurrentDay
-import kotlinx.android.synthetic.main.fragment_statistic.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class StatisticFragment: ViewBindingFragment<FragmentStatisticBinding>(FragmentStatisticBinding::inflate) {
 
@@ -18,9 +21,11 @@ class StatisticFragment: ViewBindingFragment<FragmentStatisticBinding>(FragmentS
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        viewModel.getWaterDaySum(getCurrentDay()) {daySum ->
+            viewModel.addDaySum(listOf(DaySum(getCurrentDay(), daySum)))
+            viewModel.getDaysSumList()
+        }
         initList()
-        viewModel.getWaterDaySum(getCurrentDay())
-        viewModel.getAllDaysSum()
         observeLiveData()
     }
 
@@ -37,12 +42,9 @@ class StatisticFragment: ViewBindingFragment<FragmentStatisticBinding>(FragmentS
     }
 
     private fun observeLiveData(){
-        viewModel.waterDaySum.observe(viewLifecycleOwner){daySum ->
-            viewModel.addDaySum(listOf(DaySum(getCurrentDay(), daySum)))
-        }
-
-        viewModel.allDaySum.observe(viewLifecycleOwner){allDaySum ->
-            daySumAdapter?.updateAdapter(allDaySum)
+        viewModel.daySumList.observe(viewLifecycleOwner){ daySumList ->
+            Timber.d("daySumList: $daySumList")
+            daySumAdapter?.updateAdapter(daySumList)
             daySumAdapter?.notifyDataSetChanged()
         }
     }

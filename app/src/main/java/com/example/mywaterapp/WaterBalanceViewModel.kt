@@ -9,6 +9,7 @@ import com.example.mywaterapp.data.sum.DaySum
 import com.example.mywaterapp.utils.SavingSPHelper
 import com.example.mywaterapp.utils.getCurrentDay
 import com.example.mywaterapp.utils.getDayFromFullTime
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -25,14 +26,12 @@ class WaterBalanceViewModel : ViewModel() {
     val waterDaySum: LiveData<Double> = _waterDaySum
     private val _isItFirstRun = MutableLiveData<Boolean>()
     val isItFirstRun: LiveData<Boolean> = _isItFirstRun
-    private val _allDaySum = MutableLiveData<List<DaySum>>()
-    val allDaySum: LiveData<List<DaySum>> = _allDaySum
+    private val _daySumList = MutableLiveData<List<DaySum>>()
+    val daySumList: LiveData<List<DaySum>> = _daySumList
 
     fun getAllWater() {
-        Timber.d("_data.value = ${_data.value}")
         viewModelScope.launch {
             _data.postValue(repository.getDrinkingWater())
-            Timber.d("_data.value = ${_data.value}")
         }
 
     }
@@ -51,7 +50,6 @@ class WaterBalanceViewModel : ViewModel() {
             val todayList = repository.getDrinkingWater()
                 .mapNotNull { it.takeIf { currentDay == getDayFromFullTime(it.time) } }
             _daySum.value = todayList.map { it.volume }.sum()
-            Timber.d("daySum = ${_daySum.value}")
         }
     }
 
@@ -65,21 +63,23 @@ class WaterBalanceViewModel : ViewModel() {
         }
     }
 
-    fun getWaterDaySum(day: String){
-        viewModelScope.launch(IO) {
-            _waterDaySum.postValue(repository.getWaterDaySum(day))
+    fun getWaterDaySum(day: String, callback: (Double) -> Unit){
+        viewModelScope.launch {
+            callback(repository.getWaterDaySum(day))
         }
     }
 
     fun addDaySum(daySum: List<DaySum>){
         viewModelScope.launch {
+            Timber.d("addDaySum viewModel")
             repository.addDaySum(daySum)
         }
     }
 
-    fun getAllDaysSum(){
+    fun getDaysSumList(){
         viewModelScope.launch {
-        _allDaySum.value = repository.getAllDaysSum()
+            Timber.d("getDaysSumList viewModel")
+        _daySumList.value = repository.getDaysSumList()
         }
     }
 

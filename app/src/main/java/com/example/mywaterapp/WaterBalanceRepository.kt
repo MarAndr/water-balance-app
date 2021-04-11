@@ -7,6 +7,7 @@ import com.example.mywaterapp.data.sum.DaySum
 import com.example.mywaterapp.utils.SavingSPHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 class WaterBalanceRepository {
 
@@ -36,11 +37,12 @@ class WaterBalanceRepository {
             .apply()
     }
 
-    fun getWaterDaySum(day: String): Double{
+    suspend fun getWaterDaySum(day: String): Double{
         return waterDao.getWaterDaySum(day)
     }
 
     suspend fun addDaySum(daySum: List<DaySum>){
+        Timber.d("addDaySum")
         daySumDao.addDaySum(daySum)
     }
 
@@ -48,8 +50,9 @@ class WaterBalanceRepository {
 
     }
 
-    suspend fun getAllDaysSum(): List<DaySum>{
-        return daySumDao.getAllDaysSum()
+    suspend fun getDaysSumList(): List<DaySum>{
+        Timber.d("getDaysSumList")
+        return daySumDao.getDaysSumList()
     }
 
 

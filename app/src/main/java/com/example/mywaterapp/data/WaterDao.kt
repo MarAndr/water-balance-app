@@ -20,6 +20,6 @@ interface WaterDao {
 //    fun allWaterSum() : LiveData<Double>
 
     @Query("select sum(${WaterContract.Columns.VOLUME}) from ${WaterContract.TABLE_NAME} where ${WaterContract.Columns.DAY} = :day")
-    fun getWaterDaySum(day: String): Double
+    suspend fun getWaterDaySum(day: String): Double
 
 }

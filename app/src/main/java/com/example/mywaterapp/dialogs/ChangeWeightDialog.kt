@@ -13,7 +13,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.dialog_change_weight.view.*
 import timber.log.Timber
 
-class ChangeWeightDialog(private val viewModel: WaterBalanceViewModel): DialogFragment() {
+class ChangeWeightDialog(val callback: (Int) -> Unit): DialogFragment() {
 
     lateinit var mView: View
     private var weight: Int? = null
@@ -33,7 +33,7 @@ class ChangeWeightDialog(private val viewModel: WaterBalanceViewModel): DialogFr
             .setPositiveButton("change"){_,_ ->
                 Timber.d("positive button click")
                 try {
-                    viewModel.saveWaterBalanceNormInSharedPreferences(currentGender!!, weight!!)
+                    callback(weight!!)
                 } catch (e: NullPointerException) {
                     Timber.d("weight = $weight")
                     Timber.d(e)

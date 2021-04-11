@@ -12,7 +12,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.dialog_change_gender.view.*
 import timber.log.Timber
 
-class ChangeGengerDialog(private val viewModel: WaterBalanceViewModel): DialogFragment() {
+class ChangeGengerDialog(private val callback: (String) -> Unit): DialogFragment() {
 
     lateinit var mView: View
 
@@ -24,8 +24,7 @@ class ChangeGengerDialog(private val viewModel: WaterBalanceViewModel): DialogFr
             .setTitle("Change your gender")
             .setPositiveButton("change"){_,_ ->
                 Timber.d("positiveButtonClick")
-                val currentWeight = SavingSPHelper.spUserSettings.getInt(SavingSPHelper.USER_WEIGHT, 0)
-                viewModel.saveWaterBalanceNormInSharedPreferences(getRadioButtonValue(), currentWeight)
+                callback(getRadioButtonValue())
             }
             .setNegativeButton("cancel"){_,_ ->}
             .create()

@@ -14,5 +14,5 @@ interface DaySumDao {
     suspend fun getDaySum(day: String): List<DaySum>
 
     @Query("select * from ${DaySumsContract.TABLE_NAME}")
-    suspend fun getAllDaysSum(): List<DaySum>
+    suspend fun getDaysSumList(): List<DaySum>
 }
