@@ -21,7 +21,7 @@ class SettingsFragment: ViewBindingFragment<FragmentSettingsBinding>(FragmentSet
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.tvSettingsFragmentScheduleReminder.setOnClickListener {
-        findNavController().navigate(R.id.action_settingsFragment_to_scheduleReminderFragment)
+        findNavController().navigate(R.id.action_settingsFragment2_to_scheduleReminderFragment2)
         }
         binding.tvSettingsFragmentGenderCurrentValue.text = SavingSPHelper.spUserSettings.getString(SavingSPHelper.USER_GENDER, "Male")
         binding.tvSettingsFragmentWeightCurrentValue.text =

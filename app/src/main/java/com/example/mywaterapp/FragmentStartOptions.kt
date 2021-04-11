@@ -1,5 +1,6 @@
 package com.example.mywaterapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -24,7 +25,9 @@ class FragmentStartOptions: ViewBindingFragment<FragmentOptionBinding>(FragmentO
 
             viewModel.saveWaterBalanceNormInSharedPreferences(getRadioButtonValue(), if (::weightChoiced.isInitialized) weightChoiced.toInt() else 75)
 
-            findNavController().navigate(R.id.action_fragmentStartOptions_to_mainFragment)
+            Intent(requireContext(), StartActivity::class.java).also {
+                startActivity(it)
+            }
         }
     }
 

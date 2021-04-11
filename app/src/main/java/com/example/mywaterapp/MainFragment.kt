@@ -33,19 +33,19 @@ class MainFragment: ViewBindingFragment<FragmentMainBinding>(FragmentMainBinding
             createSetVolumeDialog()
         }
         observeLiveData()
-        binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
-            when(item.itemId){
-                R.id.bottom_navigation_settings -> {
-                    findNavController().navigate(R.id.action_mainFragment_to_settingsFragment)
-                    true
-                }
-                R.id.bottom_navigation_statistic -> {
-                    findNavController().navigate(R.id.action_mainFragment_to_statisticFragment)
-                    true
-                }
-                else -> false
-            }
-        }
+//        binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
+//            when(item.itemId){
+//                R.id.bottom_navigation_settings -> {
+//                    findNavController().navigate(R.id.action_mainFragment_to_settingsFragment)
+//                    true
+//                }
+//                R.id.bottom_navigation_statistic -> {
+//                    findNavController().navigate(R.id.action_mainFragment_to_statisticFragment)
+//                    true
+//                }
+//                else -> false
+//            }
+//        }
     }
 
 

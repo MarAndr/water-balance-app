@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/bottom_navigation_home"
+        android:id="@+id/mainFragment2"
         android:icon="@drawable/ic_baseline_home"
-        android:title="settings"
+        android:title="home"
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/bottom_navigation_settings"
-        android:icon="@drawable/ic_baseline_settings"
-        android:title="settings"
-        app:showAsAction="always" />
-
-    <item
-        android:id="@+id/bottom_navigation_statistic"
+        android:id="@+id/statisticFragment2"
         android:icon="@drawable/stat"
         android:title="statistic"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/settingsFragment2"
+        android:icon="@drawable/ic_baseline_settings"
+        android:title="settings"
         app:showAsAction="always" />
 </menu>
