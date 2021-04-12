@@ -25,30 +25,31 @@ class ScheduleReminderFragment: ViewBindingFragment<FragmentScheduleReminderBind
         super.onActivityCreated(savedInstanceState)
         alarmService = AlarmService(requireContext())
         binding.btnScheduleReminderFragmentConfirm.setOnClickListener {
-            when {
-                binding.switchScheduleReminderFragmentOnHour.isChecked -> {
-                    setAlarm{
-                        alarmService.setHourAlarm(it)
-                    }
-                }
-                binding.switchScheduleReminderFragmentOn2Hour.isChecked -> {
-                    setAlarm{
-                        alarmService.set2HourAlarm(it)
-                    }
-                }
-                binding.switchScheduleReminderFragmentOn3Hour.isChecked -> {
-                    setAlarm{
-                        alarmService.set3HourAlarm(it)
-                    }
-                }
-            }
-        }
-
-        binding.btnScheduleReminderFragmentTest.setOnClickListener {
-            setAlarm{
-                alarmService.setExactAlarm(it)
-            }
-        }
+//            when {
+//                binding.switchScheduleReminderFragmentOnHour.isChecked -> {
+//                    setAlarm{
+//                        alarmService.setHourAlarm(it)
+//                    }
+//                }
+//                binding.switchScheduleReminderFragmentOn2Hour.isChecked -> {
+//                    setAlarm{
+//                        alarmService.set2HourAlarm(it)
+//                    }
+//                }
+//                binding.switchScheduleReminderFragmentOn3Hour.isChecked -> {
+//                    setAlarm{
+//                        alarmService.set3HourAlarm(it)
+//                    }
+//                }
+//            }
+//        }
+//
+//        binding.btnScheduleReminderFragmentTest.setOnClickListener {
+//            setAlarm{
+//                alarmService.setExactAlarm(it)
+//            }
+//        }
+    }
     }
 
 
@@ -85,5 +86,5 @@ class ScheduleReminderFragment: ViewBindingFragment<FragmentScheduleReminderBind
         }
     }
 
-    fun isSwitchHourChecked() = binding.switchScheduleReminderFragmentOnHour.isChecked
+//    fun isSwitchHourChecked() = binding.switchScheduleReminderFragmentOnHour.isChecked
 }

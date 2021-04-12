@@ -3,9 +3,11 @@ package com.example.mywaterapp
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.mywaterapp.data.DrinkingWater
 import com.example.mywaterapp.databinding.FragmentMainBinding
 import com.example.mywaterapp.utils.SavingSPHelper
 import com.example.mywaterapp.utils.getCurrentDay
+import com.example.mywaterapp.utils.getCurrentTime
 import com.example.mywaterapp.utils.getDayFromFullTime
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -19,13 +21,14 @@ class MainFragment: ViewBindingFragment<FragmentMainBinding>(FragmentMainBinding
     override fun onResume() {
         super.onResume()
         waterNorm = SavingSPHelper.spWaterNorm.getString("waterNorm", "0").toString()
-        tv_homeFragment_waterGoal.text = "$waterNorm ml"
+        tv_homeFragment_waterGoal.text = getString(R.string.water_norm, waterNorm)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         Timber.d("onActivityCreated")
         SavingSPHelper.initHelper(requireContext())
+        viewModel.addWater(listOf(DrinkingWater(id = 0, time = getCurrentTime(), volume = 0, day = getCurrentDay())))
         viewModel.checkIsItFirstRun()
         viewModel.getAllWater()
         viewModel.getDaySum()
@@ -33,19 +36,6 @@ class MainFragment: ViewBindingFragment<FragmentMainBinding>(FragmentMainBinding
             createSetVolumeDialog()
         }
         observeLiveData()
-//        binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
-//            when(item.itemId){
-//                R.id.bottom_navigation_settings -> {
-//                    findNavController().navigate(R.id.action_mainFragment_to_settingsFragment)
-//                    true
-//                }
-//                R.id.bottom_navigation_statistic -> {
-//                    findNavController().navigate(R.id.action_mainFragment_to_statisticFragment)
-//                    true
-//                }
-//                else -> false
-//            }
-//        }
     }
 
 

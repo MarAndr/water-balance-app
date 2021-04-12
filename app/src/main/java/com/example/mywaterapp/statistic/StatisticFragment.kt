@@ -16,12 +16,18 @@ import timber.log.Timber
 
 class StatisticFragment: ViewBindingFragment<FragmentStatisticBinding>(FragmentStatisticBinding::inflate) {
 
+    init {
+        Timber.d("Statistic fragment init")
+    }
+
     private val viewModel by viewModels<WaterBalanceViewModel>()
     private var daySumAdapter: DaySumAdapter? = null
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        Timber.d("onActivityCreated")
         viewModel.getWaterDaySum(getCurrentDay()) {daySum ->
+            Timber.d("getWaterDaySum = $daySum")
             viewModel.addDaySum(listOf(DaySum(getCurrentDay(), daySum)))
             viewModel.getDaysSumList()
         }
@@ -31,6 +37,7 @@ class StatisticFragment: ViewBindingFragment<FragmentStatisticBinding>(FragmentS
 
 
     private fun initList(){
+        Timber.d("init list")
         daySumAdapter = DaySumAdapter()
         val divider = DividerItemDecoration(requireContext(), 1)
         with(binding.recyclerViewStatisticFragmentDaySumList){
@@ -42,6 +49,7 @@ class StatisticFragment: ViewBindingFragment<FragmentStatisticBinding>(FragmentS
     }
 
     private fun observeLiveData(){
+        Timber.d("observeLiveData")
         viewModel.daySumList.observe(viewLifecycleOwner){ daySumList ->
             Timber.d("daySumList: $daySumList")
             daySumAdapter?.updateAdapter(daySumList)
@@ -51,6 +59,7 @@ class StatisticFragment: ViewBindingFragment<FragmentStatisticBinding>(FragmentS
 
     override fun onDestroy() {
         super.onDestroy()
+        Timber.d("onDestroy")
         daySumAdapter = null
     }
 }
